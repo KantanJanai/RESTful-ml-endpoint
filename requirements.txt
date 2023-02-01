@@ -2,3 +2,4 @@ flask
 keras
 pandas
 tensorflow
+joblib
