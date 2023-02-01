@@ -26,10 +26,10 @@ pipeline {
         }
         stage('docker build') {
             steps {
-                #bat 'docker build -t quentin_image .'
-                #bat 'docker run quentin_image'
-                #bat 'docker login -u quentinnicot -p dckr_pat_bERlRTKFfJJD94WuxVpp8mM1Tpk'
-                #bat 'docker push quentinnicot/jenkins-pipeline'
+                bat 'docker build -t quentin_image .'
+                bat 'docker run quentin_image'
+                bat 'docker login -u quentinnicot -p dckr_pat_bERlRTKFfJJD94WuxVpp8mM1Tpk'
+                bat 'docker push quentinnicot/jenkins-pipeline'
             }
         }
     }
