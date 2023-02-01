@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    stages {
+        stage('Say Hello World') {
+            steps {
+                echo "hello world"
+            }
+        }
+        stage('Build and Test') {
+            steps {
+                echo 'Building Python application...'
+                sh 'python --version'
+                sh 'pip install -r requirements.txt'
+                sh 'python test_main.py'
+            }
+        }
+        stage('Create Staging Branch') {
+            steps {
+                sshagent(credentials: ['ab3dafa0-05e1-479a-9b65-467466269e78']) {
+                sh "git branch --delete staging"
+                sh "git branch staging"
+                sh "git checkout staging"
+                sh "git push origin staging"
+                }
+            }
+        }
+        stage('docker build') {
+            steps {
+                #bat 'docker build -t quentin_image .'
+                #bat 'docker run quentin_image'
+                #bat 'docker login -u quentinnicot -p dckr_pat_bERlRTKFfJJD94WuxVpp8mM1Tpk'
+                #bat 'docker push quentinnicot/jenkins-pipeline'
+            }
+        }
+    }
+}
