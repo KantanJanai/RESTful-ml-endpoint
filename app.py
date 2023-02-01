@@ -8,7 +8,6 @@ from flask import render_template
 from flask import url_for
 from flask.json import jsonify
 import numpy as np
-import joblib
 import pandas as pd
 from keras.models import load_model
 
